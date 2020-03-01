@@ -1,5 +1,6 @@
 /MachiKoro/MachiKoro/Library/
 /MachiKoro/MachiKoro/Assembly-CSharp.csproj
+/MachiKoro/MachiKoro/Temp
 
 #Ignore thumbnails created by Windows
 Thumbs.db
