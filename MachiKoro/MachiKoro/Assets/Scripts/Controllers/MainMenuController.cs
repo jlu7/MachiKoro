@@ -15,11 +15,8 @@ public class MainMenuController : MonoBehaviour
 
     private void InitializeGame()
     {
-        ViewManagerSingleton.Instance.InstantiateAView("Canvas/GameView");
-
         GameObject gameStateController = new GameObject();
         gameStateController.transform.parent = ViewManagerSingleton.CurrentView.transform;
         GameStateController gsc = gameStateController.AddComponent<GameStateController>();
-        
     }
 }

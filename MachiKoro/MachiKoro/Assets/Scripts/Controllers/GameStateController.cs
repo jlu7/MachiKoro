@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameStateController : MonoBehaviour
 {
     public GameState CurrentGameState;
+    public ConstructionController ConController;
 
     public delegate void dgDiceRoll(int amountRolled);
     public event dgDiceRoll DiceRolled;
@@ -24,6 +25,11 @@ public class GameStateController : MonoBehaviour
 
     public void Start()
     {
+        ViewManagerSingleton.Instance.InstantiateAView("Canvas/GameView");
+
+        ConController = ViewManagerSingleton.CurrentView.AddComponent<ConstructionController>();
+        ConController.Initialize();
+
         Button RollDiceButton = ViewManagerSingleton.CurrentView.transform.Find("PlayerInfo/RollDiceButton").GetComponent<Button>();
         RollDiceButton.onClick.AddListener(RollDice);
 
