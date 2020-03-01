@@ -33,11 +33,27 @@ public class GameStateController : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            Players.Add(new PlayerData(true));
+            if (i == 0)
+            {
+                Players.Add(new PlayerData(PlayerData.PlayerColors.BLUE, true));
+            }
+            if (i == 1)
+            {
+                Players.Add(new PlayerData(PlayerData.PlayerColors.RED, true));
+            }
+            if (i == 2)
+            {
+                Players.Add(new PlayerData(PlayerData.PlayerColors.PURPLE, true));
+            }
+            if (i == 3)
+            {
+                Players.Add(new PlayerData(PlayerData.PlayerColors.YELLOW, true));
+            }
         }
 
         // real tmp work here
         UserPlayer = Players[0];
+        Players[0].CurrentPlayer = true;
     }
 
     public void GoToEarnIncomeGameState(int numberRolled)
@@ -48,11 +64,15 @@ public class GameStateController : MonoBehaviour
         {
             foreach (ICard card in player.CardsInPlay)
             {
-                Debug.LogError(card.CardName);
+                if (card.EColor == CardSetUp.EstablishmentColor.BLUE 
+                    || (card.EColor == CardSetUp.EstablishmentColor.GREEN && player.CurrentPlayer)
+                    || (card.EColor == CardSetUp.EstablishmentColor.PURPLE && player.CurrentPlayer)
+                    || (card.EColor == CardSetUp.EstablishmentColor.RED && !player.CurrentPlayer))
+                {
+                    card.CardAbility(player);
+                }
             }
         }
-
-        
     }
 
     public void DiceHasBeenRolled(int amountRolled)

@@ -12,8 +12,11 @@ public class Bakery : ICard
 
     string ICard.CardName => "Bakery";
 
+    public CardSetUp.EstablishmentColor EColor => CardSetUp.EstablishmentColor.GREEN;
+
     public void CardAbility(PlayerData player)
     {
-        Debug.Log("BakeryAbility");
+        player.Coins = player.Coins + 1;
+        Debug.Log("Bakery PlayerCoins: " + player.Coins);
     }
 }

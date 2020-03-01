@@ -12,8 +12,11 @@ public class WheatField : ICard
 
     string ICard.CardName => "Wheat Field";
 
+    CardSetUp.EstablishmentColor ICard.EColor => CardSetUp.EstablishmentColor.BLUE;
+
     public void CardAbility(PlayerData player)
     {
-        Debug.Log("WheatFieldAbility");
+        player.Coins = player.Coins + 1;
+        Debug.Log("WheatField PlayerCoins: " + player.Coins);
     }
 }

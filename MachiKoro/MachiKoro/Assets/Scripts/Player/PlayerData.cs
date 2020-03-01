@@ -10,8 +10,12 @@ public class PlayerData
 
     public List<ICard> LandMarks = new List<ICard>();
 
+    public bool CurrentPlayer = false;
+
+    public PlayerColors PColor;
+
     // Start is called before the first frame update
-    public PlayerData(bool BrandNewCharacter)
+    public PlayerData(PlayerColors playerColor, bool BrandNewCharacter)
     {
         if (BrandNewCharacter)
         {
@@ -19,5 +23,15 @@ public class PlayerData
             CardsInPlay.Add(new WheatField());
             CardsInPlay.Add(new Bakery());
         }
+
+        PColor = playerColor;
+    }
+
+    public enum PlayerColors
+    {
+        RED,
+        BLUE,
+        PURPLE,
+        YELLOW
     }
 }

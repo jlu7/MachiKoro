@@ -12,8 +12,20 @@ public class FurnitureFactory : ICard
 
     string ICard.CardName => "Furniture Factory";
 
+    public CardSetUp.EstablishmentColor EColor => CardSetUp.EstablishmentColor.GREEN;
+
     public void CardAbility(PlayerData player)
     {
-        Debug.Log("DoCardAbility");
+        int count = 0;
+        foreach(ICard card in player.CardsInPlay)
+        {
+            if (card.BuildingType == CardSetUp.BuildingTypes.Gear)
+            {
+                count++;
+            }
+        }
+
+        player.Coins = player.Coins + (3 * count);
+        Debug.Log("WheatField PlayerCoins: " + player.Coins);
     }
 }

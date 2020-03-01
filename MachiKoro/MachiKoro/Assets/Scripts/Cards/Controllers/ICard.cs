@@ -12,7 +12,10 @@ public interface ICard
 
     List<int> TriggeringNumbers { get; }
 
+    CardSetUp.EstablishmentColor EColor { get; }
+
     void CardAbility(PlayerData player);
+
 }
 
 public class CardSetUp
@@ -20,8 +23,16 @@ public class CardSetUp
     public enum BuildingTypes
     {
         Factory,
-        Mining,
+        Gear,
         Grain,
         Store
+    }
+
+    public enum EstablishmentColor
+    {
+        BLUE,
+        GREEN,
+        RED,
+        PURPLE
     }
 }
